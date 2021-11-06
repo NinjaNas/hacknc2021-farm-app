@@ -1,7 +1,8 @@
 package com.hacknc;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
-public class GamePanel extends JPanel {
-
+public interface GamePanel {
+    //Returns the game view of the panel
+    public JPanel getGamePanel();
 }
