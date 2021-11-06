@@ -3,8 +3,8 @@ package com.hacknc;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
+
 
 public class SeedImpl implements Seed {
   static Type _seed;
