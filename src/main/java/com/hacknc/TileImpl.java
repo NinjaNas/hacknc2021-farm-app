@@ -1,7 +1,5 @@
 package com.hacknc;
 
-import com.hacknc.Seed;
-
 import java.awt.event.*;
 import javax.swing.JButton;
 import java.awt.image.BufferedImage;
@@ -52,7 +50,7 @@ public class TileImpl implements Tile, ActionListener {
   @Override
   public void updateTile(long deltaTime) {
     // TODO Auto-generated method stub
-    if (!isPlanted) {
+    if (isPlanted) {
       long nutriChange;
       if (deltaTime * plant.getNutrientIn() > fertilizationVal) {
         nutriChange = fertilizationVal;
@@ -72,4 +70,10 @@ public class TileImpl implements Tile, ActionListener {
     Image tileIcon = icon.getScaledInstance(dim, dim, Image.SCALE_SMOOTH);
     tile.setIcon(new ImageIcon(tileIcon));
   }
+
+@Override
+public JButton getButton() {
+    // TODO Auto-generated method stub
+    return tile;
+}
 }

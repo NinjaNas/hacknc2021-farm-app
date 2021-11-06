@@ -9,7 +9,7 @@ public class FPS {
     private static Duration fpsDeltaTime = Duration.ZERO;
     private static Duration LastTime = Duration.ZERO;
     private static Instant beginTime = Instant.now();
-    private static double deltaTime = fpsDeltaTime.toMillis() - LastTime.toMillis();
+    private static long deltaTime = fpsDeltaTime.toMillis() - LastTime.toMillis();
 
 
     public static void calculatebeginningTime(){
@@ -19,11 +19,11 @@ public class FPS {
 
     public static void calcDeltaTime(){
         fpsDeltaTime = Duration.between(beginTime, Instant.now());
-        deltaTime = (double)fpsDeltaTime.toMillis() - LastTime.toMillis();
+        deltaTime = fpsDeltaTime.toMillis() - LastTime.toMillis();
         LastTime = fpsDeltaTime;
     }
 
-    public static double getDeltaTime(){
+    public static long getDeltaTime(){
         return deltaTime/1000; //changes milliseconds to seconds
     }
 }
