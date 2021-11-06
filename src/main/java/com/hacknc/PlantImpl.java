@@ -11,7 +11,7 @@ public class PlantImpl implements Plant {
   private int _yield; // Yield of the plant (the cost of the plant harvest)
   private final long _nutrientIn; // Nutrients that are removed from the tile class every tick
   private final Image _image; // Image of plant
-  private long _malTime; //Time of malnourishment
+  private long _malTime; // Time of malnourishment
 
   public PlantImpl(
       String name, int timeRipe, int timeOverripe, int yield, long nutrientIn, Image image) {
@@ -48,7 +48,7 @@ public class PlantImpl implements Plant {
 
   @Override
   public int getYield() {
-    return (int)(_yield * (_malTime/_timePlanted));
+    return (int) (_yield * (_malTime / _timePlanted));
   }
 
   @Override
@@ -83,11 +83,9 @@ public class PlantImpl implements Plant {
   @Override
   public long update(long delta, long nutri) {
     _timePlanted += delta;
-    if( nutri < _nutrientIn*delta)
-    {
-      _malTime += (1 - nutri/(_nutrientIn*delta)) * delta;
+    if (nutri < _nutrientIn * delta) {
+      _malTime += (1 - nutri / (_nutrientIn * delta)) * delta;
     }
     return delta;
   }
-
 }
