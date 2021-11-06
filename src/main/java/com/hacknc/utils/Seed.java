@@ -1,5 +1,6 @@
 package com.hacknc.utils;
 
+// The type of seeds
 enum Type {
     WHEAT,
     CORN,
@@ -12,10 +13,12 @@ enum Type {
 public final class Seed {
     static Type seed;
 
+    // Set the seed Type
     public Seed(Type seed) {
         Seed.seed = seed;
     }
-    // TODO(Isidro, Khang): balance all the plants 
+    // TODO(Isidro, Khang): balance all the plants
+    // Create PlantImpl
     public static PlantImpl plantSeed() {
         switch (seed) {
             case WHEAT:
@@ -36,11 +39,14 @@ public final class Seed {
             case TOMATO:
                 return new PlantImpl("Tomato", 10, 15, 3, 5, "image");    
                 break;
+            // NOTE: make it return an error?
             default:
                 break;
         }
     }
 
+    // Change the seed Type
+    // NOTE: Why is this method here isn't seed supposed to be static?
     public static void setCurrentSeed(Type seed) {
         Seed.seed = seed;
     }
