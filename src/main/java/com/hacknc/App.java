@@ -7,8 +7,7 @@ import javax.swing.JFrame;
  */
 public class App
 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) {
         JFrame myFrame = new JFrame("Game!");
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.setTitle("Big Farm Tycoon!");
@@ -16,10 +15,15 @@ public class App
         myFrame.setLocationRelativeTo(null);
         myFrame.setSize(500, 500);
         myFrame.setVisible(true);
+        boolean runtheGame = true;
+        while(runtheGame){
+            //update game
+            //render game
+            System.out.printf("%f\n", FPS.getDeltaTime());
+            //recalculate delta time
+            FPS.calcDeltaTime();
+        }
 
-        
     }
-
-
 
 }
