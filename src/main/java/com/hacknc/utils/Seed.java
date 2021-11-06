@@ -6,7 +6,7 @@ enum Type {
     BEANS,
     CARROT,
     BEET,
-    TOMOTO;
+    TOMATO;
 }
 
 public final class Seed {
@@ -15,19 +15,26 @@ public final class Seed {
     public Seed(Type seed) {
         Seed.seed = seed;
     }
-    public static void plantSeed() {
+    // TODO(Isidro, Khang): balance all the plants 
+    public static PlantImpl plantSeed() {
         switch (seed) {
             case WHEAT:
+                return new PlantImpl("Wheat", 10, 15, 3, 5, "image");
                 break;
             case BEANS:
+                return new PlantImpl("Beans", 10, 15, 3, 5, "image");
                 break;
             case BEET:
+                return new PlantImpl("Beet", 10, 15, 3, 5, "image");
                 break;
             case CARROT:
+                return new PlantImpl("Carrot", 10, 15, 3, 5, "image");
                 break;
             case CORN:
+                return new PlantImpl("Corn", 10, 15, 3, 5, "image");
                 break;
-            case TOMOTO:
+            case TOMATO:
+                return new PlantImpl("Tomato", 10, 15, 3, 5, "image");    
                 break;
             default:
                 break;
