@@ -94,8 +94,9 @@ public class SeedImpl implements Seed {
         }
         // NOTE: make it return an error?
       default:
-        return null;
+        return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
     }
+    return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
   }
 
   // Change the seed Type
