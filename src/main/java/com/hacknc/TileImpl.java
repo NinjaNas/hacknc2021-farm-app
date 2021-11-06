@@ -15,10 +15,9 @@ public class TileImpl implements Tile, ActionListener {
   private int dim; // Represents the nxn dimensions of the tile
   private long fertChange; // Represents the change in the ferilization value per unit time.
 
-  public TileImpl(int x, int y, int size) {
+  public TileImpl(int size) {
     dim = size;
     tile = new JButton();
-    tile.setBounds(x, y, dim, dim);
     tile.addActionListener(this);
     tile.setActionCommand("Click");
     fertilizationVal = 100;

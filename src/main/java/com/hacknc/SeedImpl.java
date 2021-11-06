@@ -33,4 +33,9 @@ public class SeedImpl implements Seed {
   public void setCurrentSeed(Type seed) {
     _seed = seed;
   }
+
+  public static void setSeed(Type seed)
+  {
+    _seed = seed;
+  }
 }

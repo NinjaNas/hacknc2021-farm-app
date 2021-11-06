@@ -1,5 +1,7 @@
 package com.hacknc;
 
+import java.awt.GridLayout;
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 public class FarmMapImpl implements FarmMap {
@@ -9,17 +11,21 @@ public class FarmMapImpl implements FarmMap {
     {
         
         mapPanel = new JPanel();
-        mapPanel.setLayout(null);
+        mapPanel.setLayout(new BoxLayout(mapPanel, BoxLayout.Y_AXIS));
         map = new Tile[n][m];
 
         for (int i = 0; i < n; i++)
         {
+            JPanel mapRow = new JPanel();
+            mapRow.setLayout(new GridLayout(0,m));
+
             for(int j = 0; j < m; j++)
             {
-                Tile tileToAdd = new TileImpl(i*size,j*size,size);
-                mapPanel.add(tileToAdd.getButton());
+                Tile tileToAdd = new TileImpl(size);
+                mapRow.add(tileToAdd.getButton());
                 map[i][j] = tileToAdd;
             }
+            mapPanel.add(mapRow);
         }
     }
 
