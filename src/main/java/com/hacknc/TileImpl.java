@@ -4,6 +4,7 @@ import java.awt.event.*;
 import javax.swing.JButton;
 import java.awt.image.BufferedImage;
 import java.awt.Image;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 
 public class TileImpl implements Tile, ActionListener {
@@ -28,6 +29,14 @@ public class TileImpl implements Tile, ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
     // Performs Action on Click
+    try {
+      plant = SeedImpl.plantSeed();
+      System.out.println(plant);
+      System.out.println(SeedImpl.imageHandler(plant));
+      this.setIcon(SeedImpl.imageHandler(plant));
+    } catch (IOException i) {
+      System.out.println("q");
+    }
     if (isTilled) {
       plant = SeedImpl.plantSeed();
       isTilled = false;
@@ -47,7 +56,7 @@ public class TileImpl implements Tile, ActionListener {
   }
 
   @Override
-  public void updateTile(long deltaTime) {
+  public void updateTile(long deltaTime) throws IOException {
     // TODO Auto-generated method stub
     if (isPlanted) {
       long nutriChange;
@@ -59,6 +68,7 @@ public class TileImpl implements Tile, ActionListener {
         fertilizationVal = -plant.getNutrientIn() * deltaTime;
       }
       plant.update(deltaTime, nutriChange);
+      this.setIcon(SeedImpl.imageHandler(plant));
     } else if (!isPlanted && !isTilled) {
       fertilizationVal += fertChange * deltaTime;
     }
@@ -66,7 +76,7 @@ public class TileImpl implements Tile, ActionListener {
 
   @Override
   public void setIcon(BufferedImage icon) {
-    Image tileIcon = icon.getScaledInstance(dim, dim, Image.SCALE_SMOOTH);
+    Image tileIcon = icon.getScaledInstance(tile.getWidth(), tile.getHeight(), Image.SCALE_SMOOTH);
     tile.setIcon(new ImageIcon(tileIcon));
   }
 

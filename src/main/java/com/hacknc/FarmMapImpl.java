@@ -1,6 +1,7 @@
 package com.hacknc;
 
 import java.awt.GridLayout;
+import java.io.IOException;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
@@ -30,7 +31,7 @@ public class FarmMapImpl implements FarmMap {
     }
 
     @Override
-    public void update(long deltaTime) {
+    public void update(long deltaTime) throws IOException {
         // TODO Auto-generated method stub
         for (Tile[] tiles : map) {
             for (Tile tile : tiles) {

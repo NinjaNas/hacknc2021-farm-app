@@ -36,66 +36,71 @@ public class SeedImpl implements Seed {
   public static BufferedImage imageHandler(Plant plant) throws IOException {
     //return ImageIO.read(new File("img.jpg"));
     //Khang: default would be tilled soil
-    switch (plant.getType()) {
-      case WHEAT:
-        switch (plant.getGrowthStage()) {
-          case PREMATURE:
-            return ImageIO.read(new File("./images/crops/wheat/0.png"));
-          case RIPE:
-            return ImageIO.read(new File("./images/crops/wheat/7.png"));
-          case OVERRIPE:
-            return null; //TODO(Isidro): find a good overripe image
-          default:
-            return ImageIO.read(new File("./images/ground/farmland_0.png"));
-        }
-      case BEET:
-        switch (plant.getGrowthStage()) {
-          case PREMATURE:
-            return ImageIO.read(new File("./images/crops/beet/0.png"));
-          case RIPE:
-            return ImageIO.read(new File("./images/crops/beet/3.png"));
-          case OVERRIPE:
-            return null;
-          default:
-            return ImageIO.read(new File("./images/ground/farmland_0.png"));
-        }
-      case CARROT:
-        switch (plant.getGrowthStage()) {
-          case PREMATURE:
-            return ImageIO.read(new File("./images/crops/carrot/0.png"));
-          case RIPE:
-            return ImageIO.read(new File("./images/crops/carrot/3.png"));
-          case OVERRIPE:
-            return null;
-          default:
-            return ImageIO.read(new File("./images/ground/farmland_0.png"));
-        }
-      case POTATO:
-        switch (plant.getGrowthStage()) {
-          case PREMATURE:
-            return ImageIO.read(new File("./images/crops/potato/0.png"));
-          case RIPE:
-            return ImageIO.read(new File("./images/crops/potato/3.png"));
-          case OVERRIPE:
-            return null;
-          default:
-            return ImageIO.read(new File("./images/ground/farmland_0.png"));
-        }
-      case BERRIES:
-        switch (plant.getGrowthStage()) {
-          case PREMATURE:
-            return ImageIO.read(new File("./images/crops/berries/0.png"));
-          case RIPE:
-            return ImageIO.read(new File("./images/crops/berries/3.png"));
-          case OVERRIPE:
-            return null;
-          default:
-            return ImageIO.read(new File("./images/ground/farmland_0.png"));
-        }
-        // NOTE: make it return an error?
-      default:
-        return null;
+    try {
+      switch (plant.getType()) {
+        case WHEAT:
+          switch (plant.getGrowthStage()) {
+            case PREMATURE:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/0.png"));
+            case RIPE:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/7.png"));
+            case OVERRIPE:
+              return null; //TODO(Isidro): find a good overripe image
+            default:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+          }
+        case BEET:
+          switch (plant.getGrowthStage()) {
+            case PREMATURE:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/0.png"));
+            case RIPE:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/2.png"));
+            case OVERRIPE:
+              return null;
+            default:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+          }
+        case CARROT:
+          switch (plant.getGrowthStage()) {
+            case PREMATURE:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/0.png"));
+            case RIPE:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/3.png"));
+            case OVERRIPE:
+              return null;
+            default:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+          }
+        case POTATO:
+          switch (plant.getGrowthStage()) {
+            case PREMATURE:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/0.png"));
+            case RIPE:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/3.png"));
+            case OVERRIPE:
+              return null;
+            default:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+          }
+        case BERRIES:
+          switch (plant.getGrowthStage()) {
+            case PREMATURE:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/0.png"));
+            case RIPE:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/3.png"));
+            case OVERRIPE:
+              return null;
+            default:
+              return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+          }
+          // NOTE: make it return an error?
+        default:
+          return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+      }
+    } catch (IOException e) {
+;
     }
+    return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
   }
 
   // Change the seed Type
