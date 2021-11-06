@@ -11,16 +11,16 @@ enum Type {
 }
 
 public final class Seed {
-    static Type seed;
+    static Type _seed;
 
     // Set the seed Type
     public Seed(Type seed) {
-        Seed.seed = seed;
+        _seed = seed;
     }
     // TODO(Isidro, Khang): balance all the plants
     // Create PlantImpl
     public static PlantImpl plantSeed() {
-        switch (seed) {
+        switch (_seed) {
             case WHEAT:
                 return new PlantImpl("Wheat", 10, 15, 3, 5, "image");
                 break;
@@ -48,7 +48,7 @@ public final class Seed {
     // Change the seed Type
     // NOTE: Why is this method here isn't seed supposed to be static?
     public static void setCurrentSeed(Type seed) {
-        Seed.seed = seed;
+        _seed = seed;
     }
 }
 
