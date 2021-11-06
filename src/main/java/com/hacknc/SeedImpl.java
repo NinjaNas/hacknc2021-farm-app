@@ -14,18 +14,14 @@ public class SeedImpl implements Seed {
     switch (_seed) {
       case WHEAT:
         return new PlantImpl("Wheat", Type.WHEAT, 10, 15, 3, 5);
-      case BEANS:
-        return new PlantImpl("Beans", Type.BEANS, 10, 15, 3, 5);
       case BEET:
         return new PlantImpl("Beet", Type.BEET, 10, 15, 3, 5);
       case CARROT:
         return new PlantImpl("Carrot", Type.CARROT, 10, 15, 3, 5);
-      case CORN:
-        return new PlantImpl("Corn", Type.CORN, 10, 15, 3, 5);
-      case TOMATO:
-        return new PlantImpl("Tomato", Type.TOMATO, 10, 15, 3, 5);
       case POTATO:
         return new PlantImpl("Potato", Type.POTATO, 10, 15, 3, 5);
+      case BERRIES:
+        return new PlantImpl("Berries", Type.BERRIES, 10, 15, 3, 5);
         // NOTE: make it return an error?
       default:
         return null;
@@ -48,17 +44,6 @@ public class SeedImpl implements Seed {
           default:
             return null;
         }
-      case BEANS:
-        switch (plant.getGrowthStage()) {
-          case PREMATURE:
-            return null;
-          case RIPE:
-            return null;
-          case OVERRIPE:
-            return null;
-          default:
-            return null;
-        }
       case BEET:
         switch (plant.getGrowthStage()) {
           case PREMATURE:
@@ -81,29 +66,18 @@ public class SeedImpl implements Seed {
           default:
             return null;
         }
-      case CORN:
-        switch (plant.getGrowthStage()) {
-          case PREMATURE:
-            return null;
-          case RIPE:
-            return null;
-          case OVERRIPE:
-            return null;
-          default:
-            return null;
-        }
-      case TOMATO:
-        switch (plant.getGrowthStage()) {
-          case PREMATURE:
-            return null;
-          case RIPE:
-            return null;
-          case OVERRIPE:
-            return null;
-          default:
-            return null;
-        }
       case POTATO:
+        switch (plant.getGrowthStage()) {
+          case PREMATURE:
+            return null;
+          case RIPE:
+            return null;
+          case OVERRIPE:
+            return null;
+          default:
+            return null;
+        }
+      case BERRIES:
         switch (plant.getGrowthStage()) {
           case PREMATURE:
             return null;
