@@ -10,6 +10,7 @@ public interface Seed {
     BEANS,
     CARROT,
     BEET,
-    TOMATO;
+    TOMATO,
+    POTATO;
   }
 }

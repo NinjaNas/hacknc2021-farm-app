@@ -24,6 +24,8 @@ public class SeedImpl implements Seed {
         return new PlantImpl("Corn", Type.CORN, 10, 15, 3, 5);
       case TOMATO:
         return new PlantImpl("Tomato", Type.TOMATO, 10, 15, 3, 5);
+      case POTATO:
+        return new PlantImpl("Potato", Type.POTATO, 10, 15, 3, 5);
         // NOTE: make it return an error?
       default:
         return null;
@@ -91,6 +93,17 @@ public class SeedImpl implements Seed {
             return null;
         }
       case TOMATO:
+        switch (plant.getGrowthStage()) {
+          case PREMATURE:
+            return null;
+          case RIPE:
+            return null;
+          case OVERRIPE:
+            return null;
+          default:
+            return null;
+        }
+      case POTATO:
         switch (plant.getGrowthStage()) {
           case PREMATURE:
             return null;
