@@ -17,7 +17,7 @@ public final class Seed {
     public Seed(Type seed) {
         _seed = seed;
     }
-    // TODO(Isidro, Khang): balance all the plants
+    // TODO(Isidro, Khang): balance all the plants and add images
     // Create PlantImpl
     public static PlantImpl plantSeed() {
         switch (_seed) {
