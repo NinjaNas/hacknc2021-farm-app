@@ -1,4 +1,4 @@
-package com.hacknc.utils;
+package com.hacknc;
 
 // The type of seeds
 enum Type {
@@ -23,26 +23,21 @@ public class Seed {
         switch (_seed) {
             case WHEAT:
                 return new PlantImpl("Wheat", 10, 15, 3, 5, null);
-                break;
             case BEANS:
                 return new PlantImpl("Beans", 10, 15, 3, 5, null);
-                break;
             case BEET:
                 return new PlantImpl("Beet", 10, 15, 3, 5, null);
-                break;
             case CARROT:
                 return new PlantImpl("Carrot", 10, 15, 3, 5, null);
-                break;
             case CORN:
                 return new PlantImpl("Corn", 10, 15, 3, 5, null);
-                break;
             case TOMATO:
-                return new PlantImpl("Tomato", 10, 15, 3, 5, null);    
-                break;
+                return new PlantImpl("Tomato", 10, 15, 3, 5, null);
             // NOTE: make it return an error?
             default:
                 break;
         }
+        return null;
     }
 
     // Change the seed Type
