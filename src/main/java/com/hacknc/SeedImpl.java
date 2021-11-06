@@ -1,6 +1,7 @@
 package com.hacknc;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class SeedImpl implements Seed {
   static Type _seed;
@@ -29,7 +30,7 @@ public class SeedImpl implements Seed {
   }
 
   // Handles the images for the stages of the plant
-  public static BufferedImage imageHandler(Plant plant) {
+  public static BufferedImage imageHandler(Plant plant) throws IOException {
     //return ImageIO.read(new File("img.jpg"));
     //Khang: default would be tilled soil
     switch (plant.getType()) {
