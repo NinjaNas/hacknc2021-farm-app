@@ -22,22 +22,22 @@ public final class Seed {
     public static PlantImpl plantSeed() {
         switch (_seed) {
             case WHEAT:
-                return new PlantImpl("Wheat", 10, 15, 3, 5, "image");
+                return new PlantImpl("Wheat", 10, 15, 3, 5, null);
                 break;
             case BEANS:
-                return new PlantImpl("Beans", 10, 15, 3, 5, "image");
+                return new PlantImpl("Beans", 10, 15, 3, 5, null);
                 break;
             case BEET:
-                return new PlantImpl("Beet", 10, 15, 3, 5, "image");
+                return new PlantImpl("Beet", 10, 15, 3, 5, null);
                 break;
             case CARROT:
-                return new PlantImpl("Carrot", 10, 15, 3, 5, "image");
+                return new PlantImpl("Carrot", 10, 15, 3, 5, null);
                 break;
             case CORN:
-                return new PlantImpl("Corn", 10, 15, 3, 5, "image");
+                return new PlantImpl("Corn", 10, 15, 3, 5, null);
                 break;
             case TOMATO:
-                return new PlantImpl("Tomato", 10, 15, 3, 5, "image");    
+                return new PlantImpl("Tomato", 10, 15, 3, 5, null);    
                 break;
             // NOTE: make it return an error?
             default:
