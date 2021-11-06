@@ -4,31 +4,36 @@ import java.awt.*;
 
 public class PlantImpl implements Plant {
   private final String _name; // Name of plant
+  private final Seed.Type _type; // Type of plant
   private final int _timeRipe; // The amount of time needed before a plant is ripe
   private final int _timeOverripe; // The amount of time needed before a plant is overripe
   private long _timePlanted; // The time that the plant is planted according to delta time
   private GrowthStage _growthStage;
   private int _yield; // Yield of the plant (the cost of the plant harvest)
   private final long _nutrientIn; // Nutrients that are removed from the tile class every tick
-  private final Image _image; // Image of plant
   private long _malTime; // Time of malnourishment
 
   public PlantImpl(
-      String name, int timeRipe, int timeOverripe, int yield, long nutrientIn, Image image) {
+      String name, Seed.Type type, int timeRipe, int timeOverripe, int yield, long nutrientIn) {
     _name = name;
+    _type = type;
     _timeRipe = timeRipe;
     _timeOverripe = timeOverripe;
     _timePlanted = 0;
     _growthStage = GrowthStage.UNPLANTED;
     _yield = yield;
     _nutrientIn = nutrientIn;
-    _image = image;
     _malTime = 0;
   }
 
   @Override
   public String getName() {
     return _name;
+  }
+
+  @Override
+  public Seed.Type getType() {
+    return _type;
   }
 
   @Override
@@ -60,11 +65,6 @@ public class PlantImpl implements Plant {
   @Override
   public long getNutrientIn() {
     return _nutrientIn;
-  }
-
-  @Override
-  public Image getImage() {
-    return _image;
   }
 
   @Override

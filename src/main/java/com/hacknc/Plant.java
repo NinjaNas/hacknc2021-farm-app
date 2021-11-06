@@ -6,6 +6,8 @@ public interface Plant {
   // Getters and setters
   String getName();
 
+  Seed.Type getType();
+
   int getRipe();
 
   int getOverRipe();
@@ -17,8 +19,6 @@ public interface Plant {
   int setYield(int amount);
 
   long getNutrientIn();
-
-  Image getImage();
 
   GrowthStage getGrowthStage();
   // The update method takes the delta time and uses it to update fields

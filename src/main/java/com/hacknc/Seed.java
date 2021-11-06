@@ -6,10 +6,9 @@ public interface Seed {
   // The type of seeds
   enum Type {
     WHEAT,
-    CORN,
-    BEANS,
     CARROT,
     BEET,
-    TOMATO;
+    POTATO,
+    BERRIES;
   }
 }
