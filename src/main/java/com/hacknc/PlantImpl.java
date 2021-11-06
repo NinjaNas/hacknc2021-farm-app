@@ -23,7 +23,6 @@ public class PlantImpl implements Plant {
     _growthStage = GrowthStage.UNPLANTED;
     _yield = yield;
     _nutrientIn = nutrientIn;
-    _image = image;
     _malTime = 0;
   }
 
