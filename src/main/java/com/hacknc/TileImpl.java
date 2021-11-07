@@ -18,7 +18,6 @@ public class TileImpl implements Tile {
     public TileImpl() {
         tile = new JButton();
         tile.setMargin(new Insets(0, 0, 0, 0));
-        tile.setPreferredSize(new Dimension(App.preferedWidth,App.preferedHeight));
         fertilizationVal = 100;
         fertChange = 5;
         isPlanted = false;
@@ -92,7 +91,7 @@ public class TileImpl implements Tile {
     @Override
     public void updateTile(double deltaTime) throws IOException {
         // TODO Auto-generated method stub
-        ImageIcon soil = Soil.getSoilIcon(isTilled,fertilizationVal);
+        BufferedImage soil = Soil.getSoilIcon(isTilled,fertilizationVal);
         if(isPlanted) {
             double nutriChange;
             double nutriNeeded = deltaTime * plant.getNutrientIn();
@@ -122,18 +121,21 @@ public class TileImpl implements Tile {
     }
 
     @Override
-    public void setIcon(ImageIcon icon) {
-        tile.setIcon(icon);
+    public void setIcon(BufferedImage icon) {
+        tile.setPreferredSize(new Dimension(tile.getWidth(), tile.getHeight()));
+        Image tileIcon = icon.getScaledInstance(tile.getWidth(), tile.getHeight(), Image.SCALE_SMOOTH);
+        tile.setIcon(new ImageIcon(tileIcon));
     }
 
     @Override
-    public void setSuperImposedIcon(ImageIcon fg, ImageIcon bg) {
+    public void setSuperImposedIcon(BufferedImage fg, BufferedImage bg) {
         BufferedImage combined = new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB);
         Graphics g = combined.getGraphics();
-        g.drawImage(bg.getImage(), 0, 0, null);
-        g.drawImage(fg.getImage(), 0, 0, null);
+        g.drawImage(bg, 0, 0, null);
+        g.drawImage(fg, 0, 0, null);
         g.dispose();
-        Image tileIcon = combined.getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH);
+        tile.setPreferredSize(new Dimension(tile.getWidth(), tile.getHeight()));
+        Image tileIcon = combined.getScaledInstance(tile.getWidth(), tile.getHeight(), Image.SCALE_SMOOTH);
         tile.setIcon(new ImageIcon(tileIcon));
     }
 

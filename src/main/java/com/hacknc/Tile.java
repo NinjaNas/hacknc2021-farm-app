@@ -2,7 +2,6 @@ package com.hacknc;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public interface Tile {
@@ -13,10 +12,10 @@ public interface Tile {
     public void updateTile(double deltaTime) throws IOException;
 
     //Sets the image of the tile
-    public void setIcon(ImageIcon icon);
+    public void setIcon(BufferedImage icon);
 
     //Sets the image of the tile
-    public void setSuperImposedIcon(ImageIcon fg, ImageIcon bg);
+    public void setSuperImposedIcon(BufferedImage fg, BufferedImage bg);
 
     //Returns the JButton associated with the tile.
     public JButton getButton();
