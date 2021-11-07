@@ -4,12 +4,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 public class SeedImpl implements Seed {
     private static Type _seed;
-    private static BufferedImage _farmland;
-    private static BufferedImage[][] _img = new BufferedImage[5][3];
+    private static ImageIcon _farmland;
+    private static ImageIcon[][] _img = new ImageIcon[5][3];
 
     // Set the seed Type
     public SeedImpl(Type seed) {
@@ -17,22 +18,22 @@ public class SeedImpl implements Seed {
     }
 
     public static void init() throws IOException {
-        _farmland = ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
-        _img[0][0] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/0.png"));
-        _img[0][1] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/1.png"));
-        _img[0][2] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/2.png"));
-        _img[1][0] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/0.png"));
-        _img[1][1] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/1.png"));
-        _img[1][2] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/2.png"));
-        _img[2][0] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/0.png"));
-        _img[2][1] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/1.png"));
-        _img[2][2] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/2.png"));
-        _img[3][0] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/0.png"));
-        _img[3][1] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/1.png"));
-        _img[3][2] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/2.png"));
-        _img[4][0] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/0.png"));
-        _img[4][1] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/1.png"));
-        _img[4][2] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/2.png"));
+        _farmland = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[0][0] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/0.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[0][1] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/1.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[0][2] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/2.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[1][0] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/0.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[1][1] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/1.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[1][2] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/2.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[2][0] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/0.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[2][1] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/1.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[2][2] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/2.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[3][0] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/0.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[3][1] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/1.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[3][2] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/2.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[4][0] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/0.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[4][1] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/1.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[4][2] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/2.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
     }
 
     // TODO(Isidro, Khang): balance all the plants and add images
@@ -56,7 +57,7 @@ public class SeedImpl implements Seed {
     }
 
     // Handles the images for the stages of the plant
-    public static BufferedImage imageHandler(Plant plant) throws IOException {
+    public static ImageIcon imageHandler(Plant plant) throws IOException {
         //return ImageIO.read(new File("img.jpg"));
         //Khang: default would be tilled soil
         Type type = plant.getType();
