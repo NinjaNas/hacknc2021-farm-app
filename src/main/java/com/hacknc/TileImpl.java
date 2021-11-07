@@ -42,7 +42,7 @@ public class TileImpl implements Tile, ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Performs Action on Click
         
-        if (!isPlanted && !MenuBarImpl.tillEnabled && isTilled) {
+        if (!isPlanted && !MenuBarImpl.tillEnabled && isTilled && !MenuBarImpl.fertEnabled) {
             plant = SeedImpl.plantSeed();
             if(plant.getCost() > MenuBarImpl.money)
             {
@@ -61,12 +61,27 @@ public class TileImpl implements Tile, ActionListener {
             }
         }else if (!isPlanted && MenuBarImpl.tillEnabled && !isTilled) {
             isTilled = true;
-        }else if(isPlanted && !MenuBarImpl.tillEnabled)
+        }else if(isPlanted && !MenuBarImpl.tillEnabled && !MenuBarImpl.fertEnabled)
         {
             MenuBarImpl.money += plant.getYield();
             plant = null;
             isPlanted = false;
             isTilled = false;
+        }else if(MenuBarImpl.fertEnabled)
+        {
+            if(!((MenuBarImpl.money - MenuBarImpl.fertCost) < 0))
+            {
+                if(fertilizationVal + MenuBarImpl.fertIncrease > 100)
+                {
+                    double diff = 100 - fertilizationVal;
+                    fertilizationVal = 100;
+                    MenuBarImpl.money -= MenuBarImpl.fertCost*diff/MenuBarImpl.fertIncrease;
+                }else
+                {
+                    fertilizationVal += MenuBarImpl.fertIncrease;
+                    MenuBarImpl.money -= MenuBarImpl.fertCost;
+                }
+            }
         }
     }
 

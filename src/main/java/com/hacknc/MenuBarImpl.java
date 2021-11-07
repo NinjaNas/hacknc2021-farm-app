@@ -3,6 +3,7 @@ package com.hacknc;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,12 +14,16 @@ import javax.swing.JButton;
 public class MenuBarImpl implements MenuBar, ActionListener{
 
     JPanel menuBar;
+    JButton fert;
     JButton till;
     JButton moneyButton;
     JButton exit;
     MenuButton[] menuButtons;
-    public static boolean tillEnabled;
+    public static boolean tillEnabled = false;
     public static int money = 1000;
+    public static boolean fertEnabled = false;
+    public static double fertIncrease = 20;
+    public static int fertCost = 10;
 
     public MenuBarImpl() {
         menuBar = new JPanel();
@@ -33,10 +38,15 @@ public class MenuBarImpl implements MenuBar, ActionListener{
             i++;
         }
         //Add Till Button
-        till = new JButton("Till_Inactive");
+        till = new JButton("Till");
         till.addActionListener(this);
         till.setActionCommand("Set_Till");
         menuBar.add(till);
+        menuBar.add(Box.createRigidArea(new Dimension(10,0)));
+        fert = new JButton("Fertilizer");
+        fert.addActionListener(this);
+        fert.setActionCommand("Set_Fert");
+        menuBar.add(fert);
         menuBar.add(Box.createRigidArea(new Dimension(10,0)));
         moneyButton = new JButton("Coins :" + Integer.toString(money));
         moneyButton.setEnabled(false);
@@ -65,15 +75,34 @@ public class MenuBarImpl implements MenuBar, ActionListener{
             if(tillEnabled)
             {
                 tillEnabled = false;
-                till.setText("Till_Inactive");
+                fertEnabled = false;
+                till.setBackground(UIManager.getColor("control"));
+                fert.setBackground(UIManager.getColor("control"));
             }else
             {
                 tillEnabled = true;
-                till.setText("Till_Active");
+                fertEnabled = false;
+                till.setBackground(new Color(0,204,0));
+                fert.setBackground(UIManager.getColor("control"));
             }
         }else if("Quit".equals(e.getActionCommand()))
         {
             System.exit(0);
+        }else if("Set_Fert".equals(e.getActionCommand()))
+        {
+            if(fertEnabled)
+            {
+                fertEnabled = false;
+                tillEnabled = false;
+                till.setBackground(UIManager.getColor("control"));
+                fert.setBackground(UIManager.getColor("control"));
+            }else
+            {
+                fertEnabled = true;
+                tillEnabled = false;
+                till.setBackground(UIManager.getColor("control"));
+                fert.setBackground(new Color(0,204,0));
+            }
         }
     }
 
