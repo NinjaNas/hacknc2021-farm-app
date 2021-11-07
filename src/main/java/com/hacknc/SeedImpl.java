@@ -8,11 +8,31 @@ import javax.imageio.ImageIO;
 
 public class SeedImpl implements Seed {
     private static Type _seed;
-    private static BufferedImage[] _img;
+    private static BufferedImage _farmland;
+    private static BufferedImage[][] _img = new BufferedImage[5][3];
 
     // Set the seed Type
     public SeedImpl(Type seed) {
         _seed = seed;
+    }
+
+    public static void init() throws IOException {
+        _farmland = ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+        _img[0][0] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/0.png"));
+        _img[0][1] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/1.png"));
+        _img[0][2] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/2.png"));
+        _img[1][0] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/0.png"));
+        _img[1][1] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/1.png"));
+        _img[1][2] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/2.png"));
+        _img[2][0] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/0.png"));
+        _img[2][1] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/1.png"));
+        _img[2][2] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/2.png"));
+        _img[3][0] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/0.png"));
+        _img[3][1] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/1.png"));
+        _img[3][2] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/2.png"));
+        _img[4][0] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/0.png"));
+        _img[4][1] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/1.png"));
+        _img[4][2] = ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/2.png"));
     }
 
     // TODO(Isidro, Khang): balance all the plants and add images
@@ -46,61 +66,61 @@ public class SeedImpl implements Seed {
             case WHEAT:
                 switch (growth) {
                     case PREMATURE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/0.png"));
+                        return _img[0][0];
                     case RIPE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/1.png"));
+                        return _img[0][1];
                     case OVERRIPE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/wheat/2.png"));
+                        return _img[0][2];
                     default:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+                        return _farmland;
                 }
             case BEET:
                 switch (growth) {
                     case PREMATURE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/0.png"));
+                        return _img[1][0];
                     case RIPE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/1.png"));
+                        return _img[1][1];
                     case OVERRIPE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/beet/2.png"));
+                        return _img[1][2];
                     default:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+                        return _farmland;
                 }
             case CARROT:
                 switch (growth) {
                     case PREMATURE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/0.png"));
+                        return _img[2][0];
                     case RIPE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/1.png"));
+                        return _img[2][1];
                     case OVERRIPE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/carrot/2.png"));
+                        return _img[2][2];
                     default:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+                        return _farmland;
                 }
             case POTATO:
                 switch (growth) {
                     case PREMATURE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/0.png"));
+                        return _img[3][0];
                     case RIPE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/1.png"));
+                        return _img[3][1];
                     case OVERRIPE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/potato/2.png"));
+                        return _img[3][2];
                     default:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+                        return _farmland;
                 }
             case BERRIES:
                 switch (growth) {
                     case PREMATURE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/0.png"));
+                        return _img[4][0];
                     case RIPE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/1.png"));
+                        return _img[4][1];
                     case OVERRIPE:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/crops/berries/2.png"));
+                        return _img[4][2];
                     default:
-                        return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+                        return _farmland;
                 }
                 // NOTE: make it return an error?
             default:
-                return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+                return _farmland;
         }
     }
 

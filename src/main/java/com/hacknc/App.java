@@ -22,6 +22,7 @@ public class App extends JFrame {
         FPS.setStart((System.nanoTime() * 0.000000001));
         ImageIO.setUseCache(false);
         Soil.init();
+        SeedImpl.init();
         int frames = 0;
         double time_elapsed = 0;
         while (true) {
