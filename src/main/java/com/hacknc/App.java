@@ -13,8 +13,8 @@ public class App extends JFrame {
 
     public static void main(String[] args) throws IOException {
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-        int width = gd.getDisplayMode().getWidth()-30;
-        int height = gd.getDisplayMode().getHeight()-30;
+        int width = gd.getDisplayMode().getWidth();
+        int height = gd.getDisplayMode().getHeight();
         preferedHeight = height/9;
         preferedWidth = width/16;
         JFrame myFrame = Frame.create();
@@ -22,17 +22,19 @@ public class App extends JFrame {
         myFrame.setTitle("Big Farm Tycoon!");
         myFrame.setResizable(true);
         myFrame.setSize(600, 600);
+        //GamePanel gameView = new GamePanelImpl(9, 16);
         WindowManager manager = new WindowManager(9,16);
         myFrame.add(manager.getWindow());
         myFrame.setBackground(new Color(102, 51, 0));
-        myFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        myFrame.setUndecorated(true);
+//        myFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        myFrame.setUndecorated(true);
         myFrame.setVisible(true);
         FPS.setStart((System.nanoTime() * 0.000000001));
         ImageIO.setUseCache(false);
-        Soil.init();
-        SeedImpl.init();
-        double avgFPS = 0;
+        Soil.init(preferedWidth,preferedHeight);
+        SeedImpl.init(preferedWidth,preferedHeight);
+        int frames = 0;
+        double time_elapsed = 0;
         while (true) {
             double deltaTime = FPS.newFrame(System.nanoTime() * 0.000000001);
             avgFPS = (avgFPS + 1/deltaTime)/2;

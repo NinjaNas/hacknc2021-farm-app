@@ -3,21 +3,20 @@ package com.hacknc;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 
 public class Soil{
-    private final static ImageIcon[] _img = new ImageIcon[4];
+    private final static BufferedImage[] _img = new BufferedImage[4];
 
     public static void init() throws IOException {
-        _img[0] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland_moist.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
-        _img[1] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
-        _img[2] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/ground/grass.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
-        _img[3] = new ImageIcon(ImageIO.read(new File("src/main/java/com/hacknc/images/ground/dirt.png")).getScaledInstance(App.preferedWidth, App.preferedHeight, Image.SCALE_SMOOTH));
+        _img[0] = ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland_moist.png"));
+        _img[1] = ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+        _img[2] = ImageIO.read(new File("src/main/java/com/hacknc/images/ground/grass.png"));
+        _img[3] = ImageIO.read(new File("src/main/java/com/hacknc/images/ground/dirt.png"));
     }
 
-    public static ImageIcon getSoilIcon(boolean isTilled, double fertVal) {
+    public static BufferedImage getSoilIcon(boolean isTilled, double fertVal) {
         // TODO Auto-generated method stub
         if(isTilled)
         {
