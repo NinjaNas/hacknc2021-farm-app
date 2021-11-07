@@ -8,12 +8,12 @@
       <repository>
         <id>nexus</id>
         <name>Releases</name>
-        <url>http://localhost:8081/repository/maven-releases</url>
+        <url>https://maven.pkg.github.com/NinjaNas/hacknc2021-farm-app</url>
       </repository>
       <snapshotRepository>
         <id>nexus</id>
         <name>Snapshot</name>
-        <url>http://localhost:8081/repository/maven-snapshots</url>
+        <url>https://maven.pkg.github.com/NinjaNas/hacknc2021-farm-app-snapshot</url>
       </snapshotRepository>
   </distributionManagement>
 
