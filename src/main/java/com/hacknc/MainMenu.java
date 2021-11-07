@@ -5,24 +5,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainMenu extends App implements ActionListener {
-    private static MainMenu _main;
     private boolean _start;
+    private JPanel mainMenu;
 
     public MainMenu() {
         _start = false;
-        JPanel menu = new JPanel();
+        mainMenu = new JPanel();
         JButton button = new JButton("Start game button");
-        menu.add(button);
+        mainMenu.add(button);
         button.addActionListener(this);
         button.setActionCommand("");
-        Frame.create().add(menu);
-    }
-
-    public static MainMenu create() {
-        if (_main == null) {
-            _main = new MainMenu();
-        }
-        return _main;
     }
 
     @Override
@@ -34,4 +26,8 @@ public class MainMenu extends App implements ActionListener {
         return _start;
     }
 
+    public JPanel getMainMenu() 
+    {
+        return mainMenu;
+    }
 }
