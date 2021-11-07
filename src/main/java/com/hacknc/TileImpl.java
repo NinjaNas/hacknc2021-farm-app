@@ -21,7 +21,7 @@ public class TileImpl implements Tile, ActionListener {
         tile.addActionListener(this);
         tile.setActionCommand("Click");
         fertilizationVal = 100;
-        fertChange = 10;
+        fertChange = 5;
         isPlanted = false;
         Border emptyBorder = BorderFactory.createEmptyBorder();
         tile.setBorder(emptyBorder);

@@ -18,7 +18,7 @@ public class PlantImpl implements Plant {
         _type = type;
         _timeRipe = timeRipe;
         _timeOverripe = timeOverripe;
-        _timePlanted = (double)0.0000001;
+        _timePlanted = 0.0000001;
         _growthStage = GrowthStage.UNPLANTED;
         _yield = yield;
         _nutrientIn = nutrientIn;
@@ -53,7 +53,8 @@ public class PlantImpl implements Plant {
 
     @Override
     public int getYield() {
-        return (int) (_yield);
+        double costToReturn = _yield * (1-_malTime/_timePlanted);
+        return (int)costToReturn;
     }
 
     @Override

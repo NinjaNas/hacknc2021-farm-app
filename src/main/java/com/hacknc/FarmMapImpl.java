@@ -1,5 +1,6 @@
 package com.hacknc;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.io.IOException;
 import javax.swing.JPanel;
@@ -11,6 +12,7 @@ public class FarmMapImpl implements FarmMap {
     public FarmMapImpl(int n, int m) {
 
         mapPanel = new JPanel();
+        mapPanel.setBackground(new Color(102, 51, 0));
         GridLayout horizontal = new GridLayout(n, 0, 0, 0);
         horizontal.setHgap(0);
         horizontal.setVgap(0);
@@ -23,6 +25,7 @@ public class FarmMapImpl implements FarmMap {
         for (int i = 0; i < n; i++) {
             JPanel mapRow = new JPanel();
             mapRow.setLayout(vertical);
+            mapRow.setBackground(new Color(102, 51, 0));
 
             for (int j = 0; j < m; j++) {
                 Tile tileToAdd = new TileImpl();
