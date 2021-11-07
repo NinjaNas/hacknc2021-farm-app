@@ -10,8 +10,11 @@ public class MenuBarImpl implements MenuBar, ActionListener{
 
     JPanel menuBar;
     JButton till;
+    JButton moneyButton;
+    JButton exit;
     MenuButton[] menuButtons;
     public static boolean tillEnabled;
+    public static int money = 1000;
 
     public MenuBarImpl() {
         menuBar = new JPanel();
@@ -29,6 +32,13 @@ public class MenuBarImpl implements MenuBar, ActionListener{
         till.addActionListener(this);
         till.setActionCommand("Set_Till");
         menuBar.add(till);
+        moneyButton = new JButton("Coins :" + Integer.toString(money));
+        moneyButton.setEnabled(false);
+        menuBar.add(moneyButton);
+        exit = new JButton("Exit Game");
+        exit.setActionCommand("Quit");
+        exit.addActionListener(this);
+        menuBar.add(exit);
     }
 
 
@@ -53,7 +63,17 @@ public class MenuBarImpl implements MenuBar, ActionListener{
                 tillEnabled = true;
                 till.setText("Till_Active");
             }
+        }else if("Quit".equals(e.getActionCommand()))
+        {
+            System.exit(0);
         }
     }
 
+
+    @Override
+    public void update() {
+        // TODO Auto-generated method stub
+        moneyButton.setText("Coins :" + Integer.toString(money));
+    }
+    
 }

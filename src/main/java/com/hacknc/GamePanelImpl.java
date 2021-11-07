@@ -29,6 +29,7 @@ public class GamePanelImpl implements GamePanel {
     public void update(double deltaTime) throws IOException {
         // TODO Auto-generated method stub
         farmMap.update(deltaTime);
+        menuBar.update();
     }
 
 }

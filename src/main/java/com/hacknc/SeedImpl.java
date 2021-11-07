@@ -19,15 +19,15 @@ public class SeedImpl implements Seed {
     public static PlantImpl plantSeed() {
         switch (_seed) {
             case WHEAT:
-                return new PlantImpl("Wheat", Type.WHEAT, 10, 15, 3, 5);
+                return new PlantImpl("Wheat", Type.WHEAT, 10, 15, 3, 5,_seed.cost);
             case BEET:
-                return new PlantImpl("Beet", Type.BEET, 10, 15, 3, 5);
+                return new PlantImpl("Beet", Type.BEET, 10, 15, 3, 5,_seed.cost);
             case CARROT:
-                return new PlantImpl("Carrot", Type.CARROT, 10, 15, 3, 5);
+                return new PlantImpl("Carrot", Type.CARROT, 10, 15, 3, 5,_seed.cost);
             case POTATO:
-                return new PlantImpl("Potato", Type.POTATO, 10, 15, 3, 5);
+                return new PlantImpl("Potato", Type.POTATO, 10, 15, 3, 5,_seed.cost);
             case BERRIES:
-                return new PlantImpl("Berries", Type.BERRIES, 10, 15, 3, 5);
+                return new PlantImpl("Berries", Type.BERRIES, 10, 15, 3, 5,_seed.cost);
             // NOTE: make it return an error?
             default:
                 return null;

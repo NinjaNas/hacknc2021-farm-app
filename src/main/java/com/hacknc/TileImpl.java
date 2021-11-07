@@ -31,19 +31,26 @@ public class TileImpl implements Tile, ActionListener {
         
         if (!isPlanted && !MenuBarImpl.tillEnabled && isTilled) {
             plant = SeedImpl.plantSeed();
-            //isTilled = false;
-            try {
-              plant = SeedImpl.plantSeed();
-              this.setIcon(SeedImpl.imageHandler(plant));
-            } catch (IOException i) {
-              System.out.println("q");
+            if(plant.getCost() > MenuBarImpl.money)
+            {
+              plant = null;
+            }else 
+            {
+              //isTilled = false;
+              try {
+                plant = SeedImpl.plantSeed();
+                this.setIcon(SeedImpl.imageHandler(plant));
+              } catch (IOException i) {
+                System.out.println("q");
+              }
+              MenuBarImpl.money -= plant.getCost(); 
+              isPlanted = true;
             }
-            isPlanted = true;
         }else if (!isPlanted && MenuBarImpl.tillEnabled && !isTilled) {
             isTilled = true;
         }else if(isPlanted && !MenuBarImpl.tillEnabled)
         {
-            plant.getYield();
+            MenuBarImpl.money += plant.getYield();
             plant = null;
             isPlanted = false;
             isTilled = false;
