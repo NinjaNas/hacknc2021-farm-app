@@ -6,6 +6,7 @@ import java.io.IOException;
 public interface FarmMap {
     //Updates the farmMap based on deltaTime
     public void update(long deltaTime) throws IOException;
+
     //Returns the panel that is the map.
     public JPanel getMap();
 }

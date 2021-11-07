@@ -4,11 +4,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainMenu extends App implements ActionListener{
+public class MainMenu extends App implements ActionListener {
     private static MainMenu _main;
     private boolean _start;
 
-    public MainMenu(){
+    public MainMenu() {
         _start = false;
         JPanel menu = new JPanel();
         JButton button = new JButton("Start game button");
@@ -18,8 +18,8 @@ public class MainMenu extends App implements ActionListener{
         Frame.create().add(menu);
     }
 
-    public static MainMenu create(){
-        if (_main == null){
+    public static MainMenu create() {
+        if (_main == null) {
             _main = new MainMenu();
         }
         return _main;

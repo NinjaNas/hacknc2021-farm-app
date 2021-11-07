@@ -7,10 +7,9 @@ import javax.swing.JPanel;
 public class MenuBarImpl implements MenuBar {
 
     JPanel menuBar;
-    MenuButton[] menuButtons; 
+    MenuButton[] menuButtons;
 
-    public MenuBarImpl()
-    {
+    public MenuBarImpl() {
         menuBar = new JPanel();
         menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
         menuButtons = new MenuButton[Seed.Type.values().length];
@@ -30,5 +29,5 @@ public class MenuBarImpl implements MenuBar {
         // TODO Auto-generated method stub
         return menuBar;
     }
-    
+
 }

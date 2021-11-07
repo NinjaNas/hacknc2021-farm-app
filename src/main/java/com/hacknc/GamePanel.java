@@ -1,7 +1,6 @@
 package com.hacknc;
 
 
-
 import javax.swing.*;
 
 public interface GamePanel {

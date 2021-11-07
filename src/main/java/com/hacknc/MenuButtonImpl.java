@@ -3,13 +3,12 @@ package com.hacknc;
 import javax.swing.JButton;
 import java.awt.event.*;
 
-public class MenuButtonImpl implements MenuButton,  ActionListener{
+public class MenuButtonImpl implements MenuButton, ActionListener {
 
     JButton menuButton;
     Seed.Type type;
 
-    public MenuButtonImpl(String name, Seed.Type _type)
-    {
+    public MenuButtonImpl(String name, Seed.Type _type) {
         menuButton = new JButton(name);
         type = _type;
         menuButton.addActionListener(this);
@@ -27,5 +26,5 @@ public class MenuButtonImpl implements MenuButton,  ActionListener{
         // TODO Auto-generated method stub
         SeedImpl.setSeed(type);
     }
-    
+
 }
