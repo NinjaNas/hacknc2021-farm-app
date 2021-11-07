@@ -15,6 +15,9 @@ public interface Tile {
     //Sets the image of the tile
     public void setIcon(BufferedImage icon);
 
+    //Sets the image of the tile
+    public void setSuperImposedIcon(BufferedImage fg, BufferedImage bg);
+
     //Code for the action that the tile will take when clicked on
     public void actionPerformed(ActionEvent e);
 

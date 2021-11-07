@@ -1,11 +1,9 @@
 package com.hacknc;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JButton;
 import java.awt.image.BufferedImage;
-import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.Insets;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 
@@ -67,7 +65,7 @@ public class TileImpl implements Tile, ActionListener {
                 fertilizationVal = -plant.getNutrientIn() * deltaTime;
             }
             plant.update(deltaTime, nutriChange);
-            this.setIcon(SeedImpl.imageHandler(plant));
+            this.setSuperImposedIcon(SeedImpl.imageHandler(plant), Soil.getSoilIcon(isTilled,fertilizationVal));
         } else if (!isPlanted) {
             fertilizationVal += fertChange * deltaTime;
             this.setIcon(Soil.getSoilIcon(isTilled,fertilizationVal));
@@ -78,6 +76,18 @@ public class TileImpl implements Tile, ActionListener {
     public void setIcon(BufferedImage icon) {
         tile.setPreferredSize(new Dimension(tile.getWidth(), tile.getHeight()));
         Image tileIcon = icon.getScaledInstance(tile.getWidth(), tile.getHeight(), Image.SCALE_SMOOTH);
+        tile.setIcon(new ImageIcon(tileIcon));
+    }
+
+    @Override
+    public void setSuperImposedIcon(BufferedImage fg, BufferedImage bg) {
+        BufferedImage combined = new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = combined.getGraphics();
+        g.drawImage(bg, 0, 0, null);
+        g.drawImage(fg, 0, 0, null);
+        g.dispose();
+        tile.setPreferredSize(new Dimension(tile.getWidth(), tile.getHeight()));
+        Image tileIcon = combined.getScaledInstance(tile.getWidth(), tile.getHeight(), Image.SCALE_SMOOTH);
         tile.setIcon(new ImageIcon(tileIcon));
     }
 
