@@ -49,10 +49,9 @@ public class TileImpl implements Tile, ActionListener {
               plant = null;
             }else
             {
-              //isTilled = false;
               try {
                 plant = SeedImpl.plantSeed();
-                this.setIcon(SeedImpl.imageHandler(plant));
+                this.setSuperImposedIcon(SeedImpl.imageHandler(plant), Soil.getSoilIcon(isTilled,fertilizationVal));
               } catch (IOException i) {
 
               }
