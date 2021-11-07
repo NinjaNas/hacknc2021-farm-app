@@ -10,18 +10,20 @@ public class PlantImpl implements Plant {
     private int _yield; // Yield of the plant (the cost of the plant harvest)
     private final double _nutrientIn; // Nutrients that are removed from the tile class every tick
     private double _malTime; // Time of malnourishment
+    private int _cost;
 
     public PlantImpl(
-            String name, Seed.Type type, int timeRipe, int timeOverripe, int yield, double nutrientIn) {
+            String name, Seed.Type type, int timeRipe, int timeOverripe, int yield, double nutrientIn, int cost) {
         _name = name;
         _type = type;
         _timeRipe = timeRipe;
         _timeOverripe = timeOverripe;
-        _timePlanted = (double)0.0000001;
+        _timePlanted = 0.0000001;
         _growthStage = GrowthStage.UNPLANTED;
         _yield = yield;
         _nutrientIn = nutrientIn;
         _malTime = 0;
+        _cost = cost;
     }
 
     @Override
@@ -51,7 +53,8 @@ public class PlantImpl implements Plant {
 
     @Override
     public int getYield() {
-        return (int) (_yield);
+        double costToReturn = _yield * (1-_malTime/_timePlanted);
+        return (int)costToReturn;
     }
 
     @Override
@@ -85,5 +88,11 @@ public class PlantImpl implements Plant {
             _malTime += (1 - nutri / (_nutrientIn * delta)) * delta;
         }
         return delta;
+    }
+
+    @Override
+    public int getCost() {
+      // TODO Auto-generated method stub
+      return _cost;
     }
 }

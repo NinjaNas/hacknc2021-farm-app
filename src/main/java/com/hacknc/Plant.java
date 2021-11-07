@@ -20,6 +20,8 @@ public interface Plant {
 
     GrowthStage getGrowthStage();
 
+    int getCost();
+
     // The update method takes the delta time and uses it to update fields
     double update(double delta, double nutri);
 

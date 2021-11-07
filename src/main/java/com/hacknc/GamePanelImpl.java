@@ -1,5 +1,6 @@
 package com.hacknc;
 
+import java.awt.Color;
 import java.io.IOException;
 
 import javax.swing.BoxLayout;
@@ -14,6 +15,7 @@ public class GamePanelImpl implements GamePanel {
         farmMap = new FarmMapImpl(n, m);
         menuBar = new MenuBarImpl();
         gamePanel = new JPanel();
+        gamePanel.setBackground(new Color(102, 102, 102));
         gamePanel.setLayout(new BoxLayout(gamePanel, BoxLayout.Y_AXIS));
         gamePanel.add(farmMap.getMap());
         gamePanel.add(menuBar.getMenuBar());
@@ -29,6 +31,7 @@ public class GamePanelImpl implements GamePanel {
     public void update(double deltaTime) throws IOException {
         // TODO Auto-generated method stub
         farmMap.update(deltaTime);
+        menuBar.update();
     }
 
 }
