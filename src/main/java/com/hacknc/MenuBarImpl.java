@@ -4,11 +4,12 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.*;
 import javax.swing.JButton;
-import java.awt.CardLayout;
+
 
 public class MenuBarImpl implements MenuBar, ActionListener{
 
@@ -16,19 +17,15 @@ public class MenuBarImpl implements MenuBar, ActionListener{
     JButton fert;
     JButton till;
     JButton moneyButton;
-    JButton menu;
+    JButton exit;
     MenuButton[] menuButtons;
     public static boolean tillEnabled = false;
     public static int money = 1000;
     public static boolean fertEnabled = false;
     public static double fertIncrease = 20;
     public static int fertCost = 10;
-    private CardLayout cl;
-    private JPanel card;
 
-    public MenuBarImpl(CardLayout _cl, JPanel _card) {
-        cl = _cl;
-        card = _card;
+    public MenuBarImpl() {
         menuBar = new JPanel();
         menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
         menuButtons = new MenuButton[Seed.Type.values().length];
@@ -55,10 +52,10 @@ public class MenuBarImpl implements MenuBar, ActionListener{
         moneyButton.setEnabled(false);
         menuBar.add(moneyButton);
         menuBar.add(Box.createRigidArea(new Dimension(10,0)));
-        menu = new JButton("Menu");
-        menu.setActionCommand("Menu");
-        menu.addActionListener(this);
-        menuBar.add(menu);
+        exit = new JButton("Exit Game");
+        exit.setActionCommand("Quit");
+        exit.addActionListener(this);
+        menuBar.add(exit);
         menuBar.setBackground(new Color(51, 51, 51));
     }
 
@@ -88,10 +85,9 @@ public class MenuBarImpl implements MenuBar, ActionListener{
                 till.setBackground(new Color(0,204,0));
                 fert.setBackground(UIManager.getColor("control"));
             }
-        }else if("Menu".equals(e.getActionCommand()))
+        }else if("Quit".equals(e.getActionCommand()))
         {
-            WindowManager.running = false;
-            cl.next(card);
+            System.exit(0);
         }else if("Set_Fert".equals(e.getActionCommand()))
         {
             if(fertEnabled)

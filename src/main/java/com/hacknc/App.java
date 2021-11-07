@@ -22,9 +22,8 @@ public class App extends JFrame {
         myFrame.setTitle("Big Farm Tycoon!");
         myFrame.setResizable(true);
         myFrame.setSize(600, 600);
-        //GamePanel gameView = new GamePanelImpl(9, 16);
-        WindowManager manager = new WindowManager(9,16);
-        myFrame.add(manager.getWindow());
+        GamePanel gameView = new GamePanelImpl(9, 16);
+        myFrame.add(gameView.getGamePanel());
         myFrame.setBackground(new Color(102, 51, 0));
 //        myFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        myFrame.setUndecorated(true);
@@ -37,12 +36,11 @@ public class App extends JFrame {
         double time_elapsed = 0;
         while (true) {
             double deltaTime = FPS.newFrame(System.nanoTime() * 0.000000001);
-            avgFPS = (avgFPS + 1/deltaTime)/2;
-            System.out.println(avgFPS);
-            if(WindowManager.running)
-            {
-                manager.update(deltaTime);
-            }
+            time_elapsed += deltaTime;
+            frames += 1;
+            System.out.println(frames / time_elapsed);
+            gameView.update(deltaTime);
+
         }
     }
 }
