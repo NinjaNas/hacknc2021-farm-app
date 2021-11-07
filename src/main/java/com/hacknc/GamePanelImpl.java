@@ -2,7 +2,7 @@ package com.hacknc;
 
 import java.awt.Color;
 import java.io.IOException;
-
+import java.awt.CardLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
@@ -11,9 +11,9 @@ public class GamePanelImpl implements GamePanel {
     private FarmMap farmMap;
     private MenuBar menuBar;
 
-    public GamePanelImpl(int n, int m) {
+    public GamePanelImpl(int n, int m, CardLayout cl, JPanel card) {
         farmMap = new FarmMapImpl(n, m);
-        menuBar = new MenuBarImpl();
+        menuBar = new MenuBarImpl(cl,card);
         gamePanel = new JPanel();
         gamePanel.setBackground(new Color(102, 102, 102));
         gamePanel.setLayout(new BoxLayout(gamePanel, BoxLayout.Y_AXIS));
