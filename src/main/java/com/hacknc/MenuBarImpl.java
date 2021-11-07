@@ -16,7 +16,7 @@ public class MenuBarImpl implements MenuBar, ActionListener{
     JButton fert;
     JButton till;
     JButton moneyButton;
-    JButton exit;
+    JButton menu;
     MenuButton[] menuButtons;
     public static boolean tillEnabled = false;
     public static int money = 1000;
@@ -55,10 +55,10 @@ public class MenuBarImpl implements MenuBar, ActionListener{
         moneyButton.setEnabled(false);
         menuBar.add(moneyButton);
         menuBar.add(Box.createRigidArea(new Dimension(10,0)));
-        exit = new JButton("Menu");
-        exit.setActionCommand("Menu");
-        exit.addActionListener(this);
-        menuBar.add(exit);
+        menu = new JButton("Menu");
+        menu.setActionCommand("Menu");
+        menu.addActionListener(this);
+        menuBar.add(menu);
         menuBar.setBackground(new Color(51, 51, 51));
     }
 

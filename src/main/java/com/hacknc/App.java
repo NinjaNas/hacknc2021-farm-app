@@ -24,13 +24,11 @@ public class App extends JFrame {
         ImageIO.setUseCache(false);
         Soil.init();
         SeedImpl.init();
-        int frames = 0;
-        double time_elapsed = 0;
+        double avgFPS = 0;
         while (true) {
             double deltaTime = FPS.newFrame(System.nanoTime() * 0.000000001);
-            time_elapsed += deltaTime;
-            frames += 1;
-            System.out.println(frames / time_elapsed);
+            avgFPS = (avgFPS + 1/deltaTime)/2;
+            System.out.println(avgFPS);
             if(WindowManager.running)
             {
                 manager.update(deltaTime);
