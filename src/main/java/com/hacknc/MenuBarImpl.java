@@ -52,13 +52,8 @@ public class MenuBarImpl implements MenuBar, ActionListener{
         moneyButton.setEnabled(false);
         menuBar.add(moneyButton);
         menuBar.add(Box.createRigidArea(new Dimension(10,0)));
-<<<<<<< HEAD
         exit = new JButton("Exit Game");
         exit.setActionCommand("Quit");
-=======
-        exit = new JButton("Menu");
-        exit.setActionCommand("Menu");
->>>>>>> parent of 11c8885 (Added Better FPS meter fixed options menu)
         exit.addActionListener(this);
         menuBar.add(exit);
         menuBar.setBackground(new Color(51, 51, 51));

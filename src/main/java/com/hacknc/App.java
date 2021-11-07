@@ -30,15 +30,7 @@ public class App extends JFrame {
             time_elapsed += deltaTime;
             frames += 1;
             System.out.println(frames / time_elapsed);
-<<<<<<< HEAD
             gameView.update(deltaTime);
-
-=======
-            if(WindowManager.running)
-            {
-                manager.update(deltaTime);
-            }
->>>>>>> parent of 11c8885 (Added Better FPS meter fixed options menu)
         }
     }
 }
