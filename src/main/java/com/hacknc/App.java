@@ -19,9 +19,15 @@ public class App extends JFrame {
         myFrame.setUndecorated(true);
         myFrame.setVisible(true);
         FPS.setStart((System.nanoTime() * 0.000000001));
+        //int frames = 0;
+        //double time_elapsed = 0;
         while (true) {
             double deltaTime = FPS.newFrame(System.nanoTime() * 0.000000001);
+            //time_elapsed += deltaTime;
+            //frames += 1;
+           // System.out.println(frames / time_elapsed);
             gameView.update(deltaTime);
+
         }
     }
 }
