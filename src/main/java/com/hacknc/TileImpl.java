@@ -2,10 +2,10 @@ package com.hacknc;
 
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.JButton;
+import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import javax.swing.ImageIcon;
 
 public class TileImpl implements Tile, ActionListener {
     private double fertilizationVal; // Represents the amount of nutrients that are held in the soil.
@@ -23,6 +23,19 @@ public class TileImpl implements Tile, ActionListener {
         fertilizationVal = 100;
         fertChange = 10;
         isPlanted = false;
+        Border emptyBorder = BorderFactory.createEmptyBorder();
+        tile.setBorder(emptyBorder);
+        tile.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Border border = BorderFactory.createLineBorder(Color.white, 2);
+                tile.setBorder(border);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Border emptyBorder = BorderFactory.createEmptyBorder();
+                tile.setBorder(emptyBorder);
+            }
+        });
     }
 
     @Override
