@@ -54,7 +54,7 @@ public class TileImpl implements Tile, ActionListener {
                 plant = SeedImpl.plantSeed();
                 this.setIcon(SeedImpl.imageHandler(plant));
               } catch (IOException i) {
-                System.out.println("q");
+                
               }
               MenuBarImpl.money -= plant.getCost(); 
               isPlanted = true;
@@ -104,7 +104,7 @@ public class TileImpl implements Tile, ActionListener {
                 fertilizationVal += -plant.getNutrientIn() * deltaTime;
             }
             plant.update(deltaTime, nutriChange);
-            System.out.println(fertilizationVal);
+            
             this.setSuperImposedIcon(SeedImpl.imageHandler(plant), Soil.getSoilIcon(isTilled,fertilizationVal));
         } else if(!isPlanted) {
             if(!isTilled)
