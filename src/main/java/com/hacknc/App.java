@@ -1,13 +1,22 @@
 package com.hacknc;
 
-
+import java.awt.GraphicsEnvironment;
+import java.awt.GraphicsDevice;
 import java.io.IOException;
 import java.awt.Color;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class App extends JFrame {
+    public static int preferedWidth;
+    public static int preferedHeight;
+
     public static void main(String[] args) throws IOException {
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int width = gd.getDisplayMode().getWidth();
+        int height = gd.getDisplayMode().getHeight();
+        preferedHeight = height/9;
+        preferedWidth = width/16;
         JFrame myFrame = Frame.create();
         myFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         myFrame.setTitle("Big Farm Tycoon!");
@@ -21,8 +30,8 @@ public class App extends JFrame {
         myFrame.setVisible(true);
         FPS.setStart((System.nanoTime() * 0.000000001));
         ImageIO.setUseCache(false);
-        Soil.init();
-        SeedImpl.init();
+        Soil.init(preferedWidth,preferedHeight);
+        SeedImpl.init(preferedWidth,preferedHeight);
         int frames = 0;
         double time_elapsed = 0;
         while (true) {
