@@ -4,24 +4,18 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <repositories>
-    <repository>
-      <releases>
-        <enabled>false</enabled>
-        <updatePolicy>always</updatePolicy>
-        <checksumPolicy>warn</checksumPolicy>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
-        <checksumPolicy>fail</checksumPolicy>
-      </snapshots>
-      <id>codehausSnapshots</id>
-      <name>Codehaus Snapshots</name>
-      <url>http://snapshots.maven.codehaus.org/maven2</url>
-      <layout>default</layout>
-    </repository>
-  </repositories>
+  <distributionManagement>
+      <repository>
+        <id>nexus</id>
+        <name>Releases</name>
+        <url>http://localhost:8081/repository/maven-releases</url>
+      </repository>
+      <snapshotRepository>
+        <id>nexus</id>
+        <name>Snapshot</name>
+        <url>http://localhost:8081/repository/maven-snapshots</url>
+      </snapshotRepository>
+  </distributionManagement>
 
   <groupId>com.hacknc</groupId>
   <artifactId>farm-app</artifactId>
