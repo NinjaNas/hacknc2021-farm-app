@@ -7,7 +7,7 @@ import javax.swing.border.Border;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class TileImpl implements Tile, ActionListener {
+public class TileImpl implements Tile {
     private double fertilizationVal; // Represents the amount of nutrients that are held in the soil.
     private Plant plant; // Represents the active plant on the tile.
     private JButton tile; // Will be the button that acts as a tile
@@ -18,8 +18,6 @@ public class TileImpl implements Tile, ActionListener {
     public TileImpl() {
         tile = new JButton();
         tile.setMargin(new Insets(0, 0, 0, 0));
-        tile.addActionListener(this);
-        tile.setActionCommand("Click");
         fertilizationVal = 100;
         fertChange = 5;
         isPlanted = false;
@@ -39,7 +37,7 @@ public class TileImpl implements Tile, ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void onClick() {
         // Performs Action on Click
 
         if (!isPlanted && !MenuBarImpl.tillEnabled && isTilled && !MenuBarImpl.fertEnabled) {
@@ -49,10 +47,9 @@ public class TileImpl implements Tile, ActionListener {
               plant = null;
             }else
             {
-              //isTilled = false;
               try {
                 plant = SeedImpl.plantSeed();
-                this.setIcon(SeedImpl.imageHandler(plant));
+                this.setSuperImposedIcon(SeedImpl.imageHandler(plant), Soil.getSoilIcon(isTilled,fertilizationVal));
               } catch (IOException i) {
 
               }
