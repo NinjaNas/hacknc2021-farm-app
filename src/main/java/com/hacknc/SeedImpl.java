@@ -19,15 +19,15 @@ public class SeedImpl implements Seed {
     public static PlantImpl plantSeed() {
         switch (_seed) {
             case WHEAT:
-                return new PlantImpl("Wheat", Type.WHEAT, 10, 15, 3, 5);
+                return new PlantImpl("Wheat", Type.WHEAT, 40, 55, 49, 12); // four months to mature and yields about 49.7 bushels per acre
             case BEET:
-                return new PlantImpl("Beet", Type.BEET, 10, 15, 3, 5);
+                return new PlantImpl("Beet", Type.BEET, 20, 30, 22, 10); // about two months to grow and yields about 19-22 tons per acre and if left in the ground too long the beets will continue to grow and the beetroot will eventually get to large
             case CARROT:
-                return new PlantImpl("Carrot", Type.CARROT, 10, 15, 3, 5);
+                return new PlantImpl("Carrot", Type.CARROT, 30, 40, 9, 7); // about three months to grow and yields about 8.8 tons per acre and if left unharvested the carrot will continue to grow but they usually do not get tastier and get bitter
             case POTATO:
-                return new PlantImpl("Potato", Type.POTATO, 10, 15, 3, 5);
+                return new PlantImpl("Potato", Type.POTATO, 35, 40, 9, 7); // about 3.5 months to grow and yields about 8.8 tons per acre, if the potato is left the ground it can create a condition that will either rot or encorage sprouting
             case BERRIES:
-                return new PlantImpl("Berries", Type.BERRIES, 10, 15, 3, 5);
+                return new PlantImpl("Berries", Type.BERRIES, 75, 85, 25, 5); // aobut 7.5 months to grow and yields about 25 tons per acre
             // NOTE: make it return an error?
             default:
                 return null;
