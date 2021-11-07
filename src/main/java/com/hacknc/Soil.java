@@ -14,7 +14,7 @@ public class Soil{
         {
             if(fertVal > 50)
             {
-                return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
+                return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland_moist.png"));
             }else
             {
                 return ImageIO.read(new File("src/main/java/com/hacknc/images/ground/farmland.png"));
