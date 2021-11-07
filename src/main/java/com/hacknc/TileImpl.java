@@ -13,7 +13,7 @@ public class TileImpl implements Tile, ActionListener {
     private JButton tile; // Will be the button that acts as a tile
     private boolean isTilled; // Is true if the tile is empty, false if the tile is planted
     private boolean isPlanted;
-    private double fertChange; // Represents the change in the ferilization value per unit time.
+    private double fertChange; // Represents the change in the fertilization value per unit time.
 
     public TileImpl() {
         tile = new JButton();
