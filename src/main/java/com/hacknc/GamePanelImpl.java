@@ -1,5 +1,7 @@
 package com.hacknc;
 
+import java.io.IOException;
+
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
@@ -21,6 +23,12 @@ public class GamePanelImpl implements GamePanel {
     public JPanel getGamePanel() {
         // TODO Auto-generated method stub
         return gamePanel;
+    }
+
+    @Override
+    public void update(double deltaTime) throws IOException {
+        // TODO Auto-generated method stub
+        farmMap.update(deltaTime);
     }
 
 }

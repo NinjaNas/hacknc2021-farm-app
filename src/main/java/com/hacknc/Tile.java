@@ -10,7 +10,7 @@ public interface Tile {
     public void setPlant(Plant plant);
 
     //Updates the fertilization value of the tile
-    public void updateTile(long deltaTime) throws IOException;
+    public void updateTile(double deltaTime) throws IOException;
 
     //Sets the image of the tile
     public void setIcon(BufferedImage icon);

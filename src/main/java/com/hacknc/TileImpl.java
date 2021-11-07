@@ -10,12 +10,12 @@ import java.io.IOException;
 import javax.swing.ImageIcon;
 
 public class TileImpl implements Tile, ActionListener {
-    private long fertilizationVal; // Represents the amount of nutrients that are held in the soil.
+    private double fertilizationVal; // Represents the amount of nutrients that are held in the soil.
     private Plant plant; // Represents the active plant on the tile.
     private JButton tile; // Will be the button that acts as a tile
-    private boolean isTilled; // Is true if the tile is empty, false if the tile is planted
+    //private boolean isTilled; // Is true if the tile is empty, false if the tile is planted
     private boolean isPlanted;
-    private long fertChange; // Represents the change in the ferilization value per unit time.
+    private double fertChange; // Represents the change in the ferilization value per unit time.
 
     public TileImpl() {
         tile = new JButton();
@@ -30,20 +30,18 @@ public class TileImpl implements Tile, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // Performs Action on Click
-        try {
+        
+        if (!isPlanted) {
             plant = SeedImpl.plantSeed();
-            System.out.println(plant);
-            System.out.println(SeedImpl.imageHandler(plant));
-            this.setIcon(SeedImpl.imageHandler(plant));
-        } catch (IOException i) {
-            System.out.println("q");
-        }
-        if (isTilled) {
-            plant = SeedImpl.plantSeed();
-            isTilled = false;
+            //isTilled = false;
+            try {
+              plant = SeedImpl.plantSeed();
+              this.setIcon(SeedImpl.imageHandler(plant));
+            } catch (IOException i) {
+              System.out.println("q");
+            }
             isPlanted = true;
-        }
-        if (isPlanted) {
+        }else if (isPlanted) {
             plant.getYield();
             plant = null;
             isPlanted = false;
@@ -57,10 +55,10 @@ public class TileImpl implements Tile, ActionListener {
     }
 
     @Override
-    public void updateTile(long deltaTime) throws IOException {
+    public void updateTile(double deltaTime) throws IOException {
         // TODO Auto-generated method stub
-        if (isPlanted) {
-            long nutriChange;
+        if(isPlanted) {
+            double nutriChange;
             if (deltaTime * plant.getNutrientIn() > fertilizationVal) {
                 nutriChange = fertilizationVal;
                 fertilizationVal = 0;
@@ -70,7 +68,7 @@ public class TileImpl implements Tile, ActionListener {
             }
             plant.update(deltaTime, nutriChange);
             this.setIcon(SeedImpl.imageHandler(plant));
-        } else if (!isPlanted && !isTilled) {
+        } else if (!isPlanted) {
             fertilizationVal += fertChange * deltaTime;
         }
     }

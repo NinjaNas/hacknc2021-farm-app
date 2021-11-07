@@ -34,7 +34,7 @@ public class FarmMapImpl implements FarmMap {
     }
 
     @Override
-    public void update(long deltaTime) throws IOException {
+    public void update(double deltaTime) throws IOException {
         // TODO Auto-generated method stub
         for (Tile[] tiles : map) {
             for (Tile tile : tiles) {

@@ -15,7 +15,6 @@ public class MenuBarImpl implements MenuBar {
         menuButtons = new MenuButton[Seed.Type.values().length];
         int i = 0;
         for (Seed.Type enumType : Seed.Type.values()) {
-            System.out.println(enumType.toString());
             MenuButton newMenuButton = new MenuButtonImpl(enumType.toString(), enumType);
             menuBar.add(newMenuButton.getButton());
             menuButtons[i] = newMenuButton;

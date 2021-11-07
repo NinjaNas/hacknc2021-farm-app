@@ -5,19 +5,19 @@ public class PlantImpl implements Plant {
     private final Seed.Type _type; // Type of plant
     private final int _timeRipe; // The amount of time needed before a plant is ripe
     private final int _timeOverripe; // The amount of time needed before a plant is overripe
-    private long _timePlanted; // The time that the plant is planted according to delta time
+    private double _timePlanted; // The time that the plant is planted according to delta time
     private GrowthStage _growthStage;
     private int _yield; // Yield of the plant (the cost of the plant harvest)
-    private final long _nutrientIn; // Nutrients that are removed from the tile class every tick
-    private long _malTime; // Time of malnourishment
+    private final double _nutrientIn; // Nutrients that are removed from the tile class every tick
+    private double _malTime; // Time of malnourishment
 
     public PlantImpl(
-            String name, Seed.Type type, int timeRipe, int timeOverripe, int yield, long nutrientIn) {
+            String name, Seed.Type type, int timeRipe, int timeOverripe, int yield, double nutrientIn) {
         _name = name;
         _type = type;
         _timeRipe = timeRipe;
         _timeOverripe = timeOverripe;
-        _timePlanted = 0;
+        _timePlanted = (double)0.0000001;
         _growthStage = GrowthStage.UNPLANTED;
         _yield = yield;
         _nutrientIn = nutrientIn;
@@ -45,13 +45,13 @@ public class PlantImpl implements Plant {
     }
 
     @Override
-    public long getTimePlanted() {
+    public double getTimePlanted() {
         return _timePlanted;
     }
 
     @Override
     public int getYield() {
-        return (int) (_yield * (_malTime / _timePlanted));
+        return (int) (_yield);
     }
 
     @Override
@@ -61,26 +61,26 @@ public class PlantImpl implements Plant {
     }
 
     @Override
-    public long getNutrientIn() {
+    public double getNutrientIn() {
         return _nutrientIn;
     }
 
     @Override
     public GrowthStage getGrowthStage() {
-        GrowthStage res = GrowthStage.UNPLANTED;
         if (_timePlanted < _timeRipe && _timePlanted > 0) {
-            res = GrowthStage.PREMATURE;
+            _growthStage = GrowthStage.PREMATURE;
         } else if (_timeRipe < _timePlanted && _timePlanted < _timeOverripe) {
-            res = GrowthStage.RIPE;
-        } else if (_timeRipe > _timeOverripe) {
-            res = GrowthStage.OVERRIPE;
+            _growthStage = GrowthStage.RIPE;
+        } else if (_timePlanted > _timeOverripe) {
+            _growthStage = GrowthStage.OVERRIPE;
         }
-        return res;
+        return _growthStage;
     }
 
     @Override
-    public long update(long delta, long nutri) {
+    public double update(double delta, double nutri) {
         _timePlanted += delta;
+        getGrowthStage();
         if (nutri < _nutrientIn * delta) {
             _malTime += (1 - nutri / (_nutrientIn * delta)) * delta;
         }

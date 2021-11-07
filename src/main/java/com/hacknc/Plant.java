@@ -10,18 +10,18 @@ public interface Plant {
 
     int getOverRipe();
 
-    long getTimePlanted();
+    double getTimePlanted();
 
     int getYield();
 
     int setYield(int amount);
 
-    long getNutrientIn();
+    double getNutrientIn();
 
     GrowthStage getGrowthStage();
 
     // The update method takes the delta time and uses it to update fields
-    long update(long delta, long nutri);
+    double update(double delta, double nutri);
 
     // enum for the growth stages
     enum GrowthStage {
