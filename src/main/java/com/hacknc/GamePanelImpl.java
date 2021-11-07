@@ -8,8 +8,8 @@ public class GamePanelImpl implements GamePanel {
     private FarmMap farmMap;
     private MenuBar menuBar;
 
-    public GamePanelImpl(int n, int m, int tileSize) {
-        farmMap = new FarmMapImpl(n, m, tileSize);
+    public GamePanelImpl(int n, int m) {
+        farmMap = new FarmMapImpl(n, m);
         menuBar = new MenuBarImpl();
         gamePanel = new JPanel();
         gamePanel.setLayout(new BoxLayout(gamePanel, BoxLayout.Y_AXIS));

@@ -10,7 +10,7 @@ public class App extends JFrame {
         myFrame.setTitle("Big Farm Tycoon!");
         myFrame.setResizable(true);
         myFrame.setSize(600, 600);
-        GamePanel gameView = new GamePanelImpl(9, 16, 200);
+        GamePanel gameView = new GamePanelImpl(9, 16);
         myFrame.add(gameView.getGamePanel());
         myFrame.setVisible(true);
         double elapsed_time = 0.0;

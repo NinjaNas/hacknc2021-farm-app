@@ -1,7 +1,5 @@
 package com.hacknc;
 
-import java.awt.*;
-
 public interface Plant {
     // Getters and setters
     String getName();

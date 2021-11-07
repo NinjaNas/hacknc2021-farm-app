@@ -1,7 +1,5 @@
 package com.hacknc;
 
-import java.awt.*;
-
 public class PlantImpl implements Plant {
     private final String _name; // Name of plant
     private final Seed.Type _type; // Type of plant

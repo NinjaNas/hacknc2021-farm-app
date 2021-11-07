@@ -2,14 +2,13 @@ package com.hacknc;
 
 import java.awt.GridLayout;
 import java.io.IOException;
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 public class FarmMapImpl implements FarmMap {
     private Tile[][] map;
     private JPanel mapPanel;
 
-    public FarmMapImpl(int n, int m, int size) {
+    public FarmMapImpl(int n, int m) {
 
         mapPanel = new JPanel();
         GridLayout horizontal = new GridLayout(n, 0, 0, 0);
@@ -26,7 +25,7 @@ public class FarmMapImpl implements FarmMap {
             mapRow.setLayout(vertical);
 
             for (int j = 0; j < m; j++) {
-                Tile tileToAdd = new TileImpl(size);
+                Tile tileToAdd = new TileImpl();
                 mapRow.add(tileToAdd.getButton());
                 map[i][j] = tileToAdd;
             }
