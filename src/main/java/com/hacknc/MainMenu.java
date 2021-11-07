@@ -1,15 +1,19 @@
 package com.hacknc;
 
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainMenu extends App implements ActionListener {
-    private boolean _start;
     private JPanel mainMenu;
+    private CardLayout cl;
+    private JPanel card;
 
-    public MainMenu() {
-        _start = false;
+    public MainMenu(CardLayout _cl, JPanel _card) {
+        cl = _cl;
+        card = _card;
         mainMenu = new JPanel();
         JButton button = new JButton("Start game button");
         mainMenu.add(button);
@@ -19,11 +23,8 @@ public class MainMenu extends App implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        _start = true;
-    }
-
-    public boolean getStart() {
-        return _start;
+        cl.next(card);
+        WindowManager.running = true;
     }
 
     public JPanel getMainMenu() 

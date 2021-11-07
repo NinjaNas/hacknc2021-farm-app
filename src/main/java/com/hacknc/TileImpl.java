@@ -124,7 +124,7 @@ public class TileImpl implements Tile {
     public void setIcon(BufferedImage icon) {
         tile.setPreferredSize(new Dimension(tile.getWidth(), tile.getHeight()));
         Image tileIcon = icon.getScaledInstance(tile.getWidth(), tile.getHeight(), Image.SCALE_SMOOTH);
-        tile.setIcon(new ImageIcon(tileIcon));
+        tile.setIcon(new ImageIcon(icon));
     }
 
     @Override
@@ -136,7 +136,7 @@ public class TileImpl implements Tile {
         g.dispose();
         tile.setPreferredSize(new Dimension(tile.getWidth(), tile.getHeight()));
         Image tileIcon = combined.getScaledInstance(tile.getWidth(), tile.getHeight(), Image.SCALE_SMOOTH);
-        tile.setIcon(new ImageIcon(tileIcon));
+        tile.setIcon(new ImageIcon(combined));
     }
 
     @Override
