@@ -66,12 +66,22 @@ public class TileImpl implements Tile, ActionListener {
                 fertilizationVal = 0;
             } else {
                 nutriChange = plant.getNutrientIn() * deltaTime;
-                fertilizationVal = -plant.getNutrientIn() * deltaTime;
+                fertilizationVal += -plant.getNutrientIn() * deltaTime;
             }
             plant.update(deltaTime, nutriChange);
+            System.out.println(fertilizationVal);
             this.setSuperImposedIcon(SeedImpl.imageHandler(plant), Soil.getSoilIcon(isTilled,fertilizationVal));
-        } else if (!isPlanted) {
-            fertilizationVal += fertChange * deltaTime;
+        } else if(!isPlanted) {
+            if(!isTilled)
+            { 
+                if(fertilizationVal + fertChange * deltaTime > 100)
+                {
+                  fertilizationVal = 100;
+                }else
+                {
+                  fertilizationVal += fertChange * deltaTime;
+                }
+            }
             this.setIcon(Soil.getSoilIcon(isTilled,fertilizationVal));
         }
     }
