@@ -4,19 +4,6 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <distributionManagement>
-      <repository>
-        <id>nexus</id>
-        <name>Releases</name>
-        <url>https://maven.pkg.github.com/NinjaNas/hacknc2021-farm-app</url>
-      </repository>
-      <snapshotRepository>
-        <id>nexus</id>
-        <name>Snapshot</name>
-        <url>https://maven.pkg.github.com/NinjaNas/hacknc2021-farm-app-snapshot</url>
-      </snapshotRepository>
-  </distributionManagement>
-
   <groupId>com.hacknc</groupId>
   <artifactId>farm-app</artifactId>
   <version>1.0-SNAPSHOT</version>
