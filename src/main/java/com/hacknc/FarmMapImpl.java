@@ -4,13 +4,13 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.io.IOException;
 import javax.swing.JPanel;
+import java.awt.event.*;
 
-public class FarmMapImpl implements FarmMap {
+public class FarmMapImpl implements FarmMap, ActionListener {
     private Tile[][] map;
     private JPanel mapPanel;
 
     public FarmMapImpl(int n, int m) {
-
         mapPanel = new JPanel();
         mapPanel.setBackground(new Color(102, 51, 0));
         GridLayout horizontal = new GridLayout(n, 0, 0, 0);
@@ -31,6 +31,8 @@ public class FarmMapImpl implements FarmMap {
                 Tile tileToAdd = new TileImpl();
                 mapRow.add(tileToAdd.getButton());
                 map[i][j] = tileToAdd;
+                tileToAdd.getButton().addActionListener(this);
+                tileToAdd.getButton().setActionCommand(Integer.toString(i)+Integer.toString(j));
             }
             mapPanel.add(mapRow);
         }
@@ -50,5 +52,12 @@ public class FarmMapImpl implements FarmMap {
     public JPanel getMap() {
         // TODO Auto-generated method stub
         return mapPanel;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        int i =Integer.parseInt( e.getActionCommand().substring(0,1));
+        int j =Integer.parseInt( e.getActionCommand().substring(1,2));
+        map[i][j].onClick();        
     }
 }
