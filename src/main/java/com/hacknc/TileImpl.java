@@ -41,22 +41,22 @@ public class TileImpl implements Tile, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // Performs Action on Click
-        
+
         if (!isPlanted && !MenuBarImpl.tillEnabled && isTilled && !MenuBarImpl.fertEnabled) {
             plant = SeedImpl.plantSeed();
             if(plant.getCost() > MenuBarImpl.money)
             {
               plant = null;
-            }else 
+            }else
             {
               //isTilled = false;
               try {
                 plant = SeedImpl.plantSeed();
                 this.setIcon(SeedImpl.imageHandler(plant));
               } catch (IOException i) {
-                
+
               }
-              MenuBarImpl.money -= plant.getCost(); 
+              MenuBarImpl.money -= plant.getCost();
               isPlanted = true;
             }
         }else if (!isPlanted && MenuBarImpl.tillEnabled && !isTilled) {
@@ -94,21 +94,23 @@ public class TileImpl implements Tile, ActionListener {
     @Override
     public void updateTile(double deltaTime) throws IOException {
         // TODO Auto-generated method stub
+        BufferedImage soil = Soil.getSoilIcon(isTilled,fertilizationVal);
         if(isPlanted) {
             double nutriChange;
-            if (deltaTime * plant.getNutrientIn() > fertilizationVal) {
+            double nutriNeeded = deltaTime * plant.getNutrientIn();
+            if (nutriNeeded > fertilizationVal) {
                 nutriChange = fertilizationVal;
                 fertilizationVal = 0;
             } else {
-                nutriChange = plant.getNutrientIn() * deltaTime;
-                fertilizationVal += -plant.getNutrientIn() * deltaTime;
+                nutriChange = nutriNeeded;
+                fertilizationVal -= nutriNeeded;
             }
             plant.update(deltaTime, nutriChange);
-            
-            this.setSuperImposedIcon(SeedImpl.imageHandler(plant), Soil.getSoilIcon(isTilled,fertilizationVal));
-        } else if(!isPlanted) {
+
+            this.setSuperImposedIcon(SeedImpl.imageHandler(plant), soil);
+        } else {
             if(!isTilled)
-            { 
+            {
                 if(fertilizationVal + fertChange * deltaTime > 100)
                 {
                   fertilizationVal = 100;
@@ -117,7 +119,7 @@ public class TileImpl implements Tile, ActionListener {
                   fertilizationVal += fertChange * deltaTime;
                 }
             }
-            this.setIcon(Soil.getSoilIcon(isTilled,fertilizationVal));
+            this.setIcon(soil);
         }
     }
 
