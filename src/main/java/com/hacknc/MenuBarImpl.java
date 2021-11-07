@@ -2,12 +2,16 @@ package com.hacknc;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import java.awt.event.*;
+import javax.swing.JButton;
 
 
-public class MenuBarImpl implements MenuBar {
+public class MenuBarImpl implements MenuBar, ActionListener{
 
     JPanel menuBar;
+    JButton till;
     MenuButton[] menuButtons;
+    public static boolean tillEnabled;
 
     public MenuBarImpl() {
         menuBar = new JPanel();
@@ -20,6 +24,11 @@ public class MenuBarImpl implements MenuBar {
             menuButtons[i] = newMenuButton;
             i++;
         }
+        //Add Till Button
+        till = new JButton("Till_Inactive");
+        till.addActionListener(this);
+        till.setActionCommand("Set_Till");
+        menuBar.add(till);
     }
 
 
@@ -27,6 +36,24 @@ public class MenuBarImpl implements MenuBar {
     public JPanel getMenuBar() {
         // TODO Auto-generated method stub
         return menuBar;
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        if("Set_Till".equals(e.getActionCommand()))
+        {
+            if(tillEnabled)
+            {
+                tillEnabled = false;
+                till.setText("Till_Inactive");
+            }else
+            {
+                tillEnabled = true;
+                till.setText("Till_Active");
+            }
+        }
     }
 
 }

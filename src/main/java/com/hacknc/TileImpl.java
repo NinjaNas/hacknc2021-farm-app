@@ -31,7 +31,7 @@ public class TileImpl implements Tile, ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Performs Action on Click
         
-        if (!isPlanted) {
+        if (!isPlanted && !MenuBarImpl.tillEnabled && isTilled) {
             plant = SeedImpl.plantSeed();
             //isTilled = false;
             try {
@@ -41,10 +41,14 @@ public class TileImpl implements Tile, ActionListener {
               System.out.println("q");
             }
             isPlanted = true;
-        }else if (isPlanted) {
+        }else if (!isPlanted && MenuBarImpl.tillEnabled && !isTilled) {
+            isTilled = true;
+        }else if(isPlanted && !MenuBarImpl.tillEnabled)
+        {
             plant.getYield();
             plant = null;
             isPlanted = false;
+            isTilled = false;
         }
     }
 
