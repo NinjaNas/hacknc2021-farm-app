@@ -1,7 +1,6 @@
 package com.hacknc;
 
 import java.awt.image.BufferedImage;
-import java.awt.event.*;
 import java.io.IOException;
 import javax.swing.JButton;
 
@@ -18,9 +17,9 @@ public interface Tile {
     //Sets the image of the tile
     public void setSuperImposedIcon(BufferedImage fg, BufferedImage bg);
 
-    //Code for the action that the tile will take when clicked on
-    public void actionPerformed(ActionEvent e);
-
     //Returns the JButton associated with the tile.
     public JButton getButton();
+
+    //Defines the action to take with the button on click
+    public void onClick();
 }
