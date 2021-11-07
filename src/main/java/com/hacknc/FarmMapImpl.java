@@ -12,13 +12,19 @@ public class FarmMapImpl implements FarmMap {
     {
         
         mapPanel = new JPanel();
-        mapPanel.setLayout(new BoxLayout(mapPanel, BoxLayout.Y_AXIS));
+        GridLayout horizontal = new GridLayout(n,0,0,0);
+        horizontal.setHgap(0);
+        horizontal.setVgap(0);
+        GridLayout vertical = new GridLayout(0,m,0,0);
+        vertical.setHgap(0);
+        vertical.setVgap(0);
+        mapPanel.setLayout(horizontal);
         map = new Tile[n][m];
 
         for (int i = 0; i < n; i++)
         {
             JPanel mapRow = new JPanel();
-            mapRow.setLayout(new GridLayout(0,m));
+            mapRow.setLayout(vertical);
 
             for(int j = 0; j < m; j++)
             {

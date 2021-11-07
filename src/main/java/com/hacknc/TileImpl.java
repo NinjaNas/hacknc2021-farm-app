@@ -3,7 +3,9 @@ package com.hacknc;
 import java.awt.event.*;
 import javax.swing.JButton;
 import java.awt.image.BufferedImage;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Insets;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 
@@ -19,6 +21,7 @@ public class TileImpl implements Tile, ActionListener {
   public TileImpl(int size) {
     dim = size;
     tile = new JButton();
+    tile.setMargin(new Insets(0,0,0,0));
     tile.addActionListener(this);
     tile.setActionCommand("Click");
     fertilizationVal = 100;
@@ -76,6 +79,7 @@ public class TileImpl implements Tile, ActionListener {
 
   @Override
   public void setIcon(BufferedImage icon) {
+    tile.setPreferredSize(new Dimension(tile.getWidth(),tile.getHeight()));
     Image tileIcon = icon.getScaledInstance(tile.getWidth(), tile.getHeight(), Image.SCALE_SMOOTH);
     tile.setIcon(new ImageIcon(tileIcon));
   }
