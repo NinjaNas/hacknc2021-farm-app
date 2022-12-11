@@ -1,4 +1,4 @@
-# Big Farm Tycoon for Hack NC 2021
+# Big Farm Tycoon for HackNC 2021
 
 **This project won John Deere Best Farming Simulation Game!** 
 
