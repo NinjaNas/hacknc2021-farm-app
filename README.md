@@ -6,6 +6,13 @@ Link to the Devpost:
 - https://devpost.com/software/big-farm-tycoon
 We decided to use what we learned from COMP 301 about Java OOP principles and JFrame to create a tile farming game. 
 
+## Demo
+ This is the demo of the project:
+
+- https://www.youtube.com/watch?v=COboDCdrsbs
+
+[![Demo](https://img.youtube.com/vi/COboDCdrsbs/0.jpg)](https://www.youtube.com/watch?v=COboDCdrsbs)
+
 ## Features
 - Tilling
 - Planting
@@ -28,10 +35,3 @@ We decided to use what we learned from COMP 301 about Java OOP principles and JF
   - Use for buying seeds and fertilizer
 - A yield system 
   - You will get different amounts of money depending at what phase you harvest at
-
-## Demo
- This is the demo of the project:
-
-- https://www.youtube.com/watch?v=COboDCdrsbs
-
-[![Demo](https://img.youtube.com/vi/COboDCdrsbs/0.jpg)](https://www.youtube.com/watch?v=COboDCdrsbs)
